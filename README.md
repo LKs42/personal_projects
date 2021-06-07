@@ -1,4 +1,4 @@
-# personal_projects
+# Personal projects
 This repository is all about side projects I do in my free time. As for the rest of my work, it is mostly centered around game development.
 
 # What you'll find
