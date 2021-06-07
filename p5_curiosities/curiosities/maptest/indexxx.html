@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src=""/code.jquery.com/jquery-1.7.1.js""></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+    <!-- <script type="text/javascript" src="js.js"></script> -->
+
+    <title></title>
+    <script type="text/javascript">
+
+    ( function($) {
+
+        //Code block here
+        $(window).load( function() {
+            // do Stuff
+            $('img').mousemove(function(e) {
+
+                if(!this.canvas) {
+                    this.canvas = $('<canvas />')[0];
+                    this.canvas.width = this.width;
+                    this.canvas.height = this.height;
+                    this.canvas.getContext('2d').drawImage(this, 0, 0, this.width, this.height);
+                }
+
+                var pixelData = this.canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+
+                $('#output').html('R: ' + pixelData[0] + '<br>G: ' + pixelData[1] + '<br>B: ' + pixelData[2] + '<br>A: ' + pixelData[3]);
+
+
+            });
+        });
+
+        $(document).ready( function() {
+            //Wiggle Wiggle
+        });
+
+    });
+</script>
+  </head>
+  <body>
+
+    <img src="map.jpg"/>
+    <pre id="output"> </pre>
+    <script>
+ // tell the embed parent frame the height of the content
+ if (window.parent && window.parent.parent){
+   window.parent.parent.postMessage(["resultsFrame", {
+     height: document.body.getBoundingClientRect().height,
+     slug: "None"
+   }], "*")
+ }
+</script>
+  </body>
+
+</html>
